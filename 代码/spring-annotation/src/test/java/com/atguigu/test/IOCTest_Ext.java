@@ -1,5 +1,6 @@
 package com.atguigu.test;
 
+import com.atguigu.ext.MyApplicationEvent;
 import org.junit.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,6 +16,8 @@ import com.atguigu.dao.BookDao;
 import com.atguigu.ext.ExtConfig;
 import com.atguigu.service.BookService;
 
+import java.util.Date;
+
 public class IOCTest_Ext {
 	
 	@Test
@@ -23,9 +26,10 @@ public class IOCTest_Ext {
 		
 		
 		//发布事件；
-		applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间")) {
+//		applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间")) {
+//		});
+		applicationContext.publishEvent(new MyApplicationEvent(applicationContext,new Date()) {
 		});
-		
 		applicationContext.close();
 	}
 
